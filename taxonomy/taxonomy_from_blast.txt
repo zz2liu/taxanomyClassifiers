@@ -1,0 +1,130 @@
+What Noah wants:
+
+- separation of the FASTA files from each run into separate files for  
+"bacteria", "fungi", other
+= do the lineage mapping and decide a taxon for each seq.
+
+- insertion of the bacterial sequences into an Arb tree and the  
+fungal sequences into a fungal Arb database that he will supply
+- UniFrac analysis of the five samples, separately for the fungi and  
+bacteria
+= make a envfile, insert into the philrdp tree.
+
+- classification of the number of sequences in each sample (a) by  
+BLAST, (b) phylogenetically (will need to use Pace lab tree for the  
+latter because there are some sorts of sequences from each group).
+
+He needs this within the next 2 weeks, sooner is better.
+====blastall again all_ssu ===
+[blastall] WARNING: G912P34RA24.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G912P35FN1.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G914P35FH24.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P33RB2.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P33RC10.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P33RD9.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P33RD10.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P33RI2.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P33RI3.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P33RI24.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P33RJ24.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P33RK24.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P33RL24.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P35RA10.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P35FA20.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P35RA20.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P35RB1.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P35RF9.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+[blastall] WARNING: G913P35FN12.T0: Could not calculate ungapped Karlin-Altschul parameters due to an invalid query sequence or its translation. Please verify the query sequence(s) and/or filtering options
+
+'''
+#from rob.taxa.dump (unique taxid found in noah's samples mapped to lineages)
+In [26]: count_freqs([tuple(taxon[2:3]) for taxon in taxa])
+Out[26]: #phylum counts
+{(): 2,
+ ('Actinobacteria',): 120,
+ ('Aquificae',): 1,
+ ('Bacteroidetes/Chlorobi group',): 72,
+ ('Bromoviridae',): 1,
+ ('Chloroflexi',): 3,
+ ('Crenarchaeota',): 5,
+ ('Cyanobacteria',): 1,
+ ('Euryarchaeota',): 2,
+ ('Fibrobacteres/Acidobacteria group',): 2,
+ ('Firmicutes',): 126,
+ ('Fungi/Metazoa group',): 518,
+ ('Lobosea',): 1,
+ ('Malawimonadidae',): 1,
+ ('Mycetozoa',): 11,
+ ('Nitrospirae',): 3,
+ ('Phycodnaviridae',): 1,
+ ('Planctomycetes',): 4,
+ ('Proteobacteria',): 524,
+ ('Spirochaetes',): 6,
+ ('Viridiplantae',): 199,
+ ('environmental samples',): 20,
+ ('stramenopiles',): 14,
+ ('unclassified Bacteria',): 23,
+ ('unclassified eukaryotes',): 2,
+ ('vectors',): 71}
+
+'''
+==== those without a taxon ====
+1. plastid or bacterial; cynabacteria
+2. pp (ql['G911P31FA16.T0'][:10])
+[['Mitochondrion', 'Viridiplantae', 'Streptophyta', 'Embryophyta', 'Tracheophyta', 'Spermatophyta', 'Coniferopsida', 'Coniferales', 'Pinaceae', 'Pinus', 'Strobus'],
+ ['Bacteria', 'Proteobacteria', 'gamma subdivision', 'Buchnera'],
+ ['Bacteria', 'Proteobacteria', 'gamma subdivision', 'Buchnera'],
+ ['Bacteria', 'Proteobacteria', 'gamma subdivision', 'Buchnera'],
+ ['Bacteria', 'Proteobacteria', 'gamma subdivision', 'Buchnera'],
+ ['Bacteria', 'Proteobacteria', 'gamma subdivision', 'Buchnera'],
+ ['Bacteria', 'Proteobacteria', 'gamma subdivision', 'Buchnera'],
+ ['Bacteria', 'Proteobacteria', 'gamma subdivision', 'Buchnera'],
+ ['Bacteria', 'Proteobacteria', 'gamma subdivision', 'Buchnera'],
+ ['Bacteria', 'Proteobacteria', 'gamma subdivision', 'Buchnera']]
+*3. pp (ql['G911P31RB1.T0'])  -- check the code
+[['Bacteria', 'Proteobacteria', 'gamma subdivision', 'Buchnera']]
+  'Streptophyta',
+  'Embryophyta',
+  'Tracheophyta',
+  'Spermatophyta',
+  'Magnoliophyta',
+  'eudicotyledons',
+  'core eudicots',
+  'Caryophyllidae',
+  'Caryophyllales',
+  'Chenopodiaceae',
+  'Spinacia'],
+4. G911P31FB23.T0  -- check the blast
+['Plastid', 'Viridiplantae',...]
+ ['Eukaryota', 'Viridiplantae',]
+ None,
+G911P31FD3.T0
+['Plastid',
+  'Viridiplantae',
+  'Streptophyta',
+  'Embryophyta',
+  'Tracheophyta',
+  'Spermatophyta',
+  'Magnoliophyta',
+  'eudicotyledons',
+  'core eudicots',
+  'Asteridae',
+  'euasterids I',
+  'Solanales',
+  'Solanaceae',
+  'Nicotiana'],
+ ['Eukaryota',
+  'Viridiplantae',
+  'Streptophyta',
+  'Embryophyta',
+  'Tracheophyta',
+  'Spermatophyta',
+  'Magnoliophyta',
+  'eudicotyledons',
+  'core eudicots',
+  'Caryophyllidae',
+  'Caryophyllales',
+  'Chenopodiaceae',
+  'Spinacia'],
+ None,
+

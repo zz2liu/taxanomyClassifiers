@@ -1,0 +1,4 @@
+tip_name	RDP taxon:['domain', 'phylum', 'class', 'order', 'family', 'genus', 'species']	mapped_pace_name	group names from root
+LM4B12	Bacteria; Proteobacteria	Proteobacteria	Bacteria; Proteobacteria; 'Alpha-, Beta, Gamma proteobacteria'; 'Gamma(beta)proteobacteria'
+LahMult2.1	Bacteria; Firmicutes; Clostridia; Clostridiales; Lachnospiraceae; Butyrivibrio	'Butyrivibrio et al.'	Bacteria; Firmicutes; 'Butyrivibrio et al.'
+LahMult2	Bacteria; Firmicutes; Clostridia; Clostridiales; Lachnospiraceae; Butyrivibrio	'Butyrivibrio et al.'	Bacteria; Firmicutes; 'Butyrivibrio et al.'

@@ -1,0 +1,7 @@
+<trainsetNo>1</trainsetNo><version>version1</version><modversion>test</modversion><file>genus_wordConditionalProbList</file>
+2	-1.1921383
+2	-1.1921383
+1	-0.7932306
+2	-1.0809127
+1	-0.90445626
+0	-0.49899116
